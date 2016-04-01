@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lista</string>
+    <string name="listTextView">Hola amigo, estamos en la lista</string>
+    <string name="hello">Hola, estamos en la pantalla principal</string>
+</resources>
