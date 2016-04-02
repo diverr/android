@@ -3,6 +3,9 @@ package net.davidsantiago.developerhub.Application;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
+
+import net.davidsantiago.developerhub.Models.Category;
 
 
 /**
@@ -16,6 +19,8 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        ParseObject.registerSubclass(Category.class);
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, APPID, CLIENTKEY);

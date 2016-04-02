@@ -18,54 +18,43 @@ public class User extends ParseUser {
     private ParseFile photo;
 
     public String getId() {
-        return id;
+        return getObjectId();
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    @Override
     public String getEmail() {
-        return email;
+        return getString("email");
     }
 
-    @Override
     public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
+        put("email", email);
+        put("username", email);
     }
 
     public String getUserName() {
-        return userName;
+        return getString("name");
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        put("name", userName);
     }
 
     public Boolean getEmailVerified() {
         return emailVerified;
     }
 
-    public void setEmailVerified(Boolean emailVerified) {
-        this.emailVerified = emailVerified;
+    public boolean isEmailVerified() {
+        return getBoolean("emailVerified");
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        put("emailVerified", emailVerified);
     }
 
     public ParseFile getPhoto() {
-        return photo;
+        return getParseFile("photo");
     }
 
     public void setPhoto(ParseFile photo) {
-        this.photo = photo;
+        put("photo", photo);
     }
 }

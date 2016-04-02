@@ -7,16 +7,16 @@ import com.parse.ParseObject;
 /**
  * Created by davidsantiago on 2/4/16.
  */
-@ParseClassName("Course")
-public class Course extends ParseObject {
+@ParseClassName("Video")
+public class Video extends ParseObject {
 
     private String id;
     private String title;
-    private Category category;
-    private User owner;
+    private String code;
+    private Course course;
     private ParseFile photo;
-    private ParseFile icon;
-    private boolean isValid;
+    private int lesson;
+    private int duration;
 
     public String getId() {
         return getObjectId();
@@ -26,23 +26,23 @@ public class Course extends ParseObject {
         return getString("title");
     }
 
-    public Category getCategory() {
-        return (Category) getParseObject("category");
+    public String getCode() {
+        return getString("code");
     }
 
-    public User getOwner() {
-        return (User) getParseObject("owner");
+    public Course getCourse() {
+        return (Course) getParseObject("course");
     }
 
     public ParseFile getPhoto() {
         return getParseFile("photo");
     }
 
-    public ParseFile getIcon() {
-        return getParseFile("icon");
+    public int getLesson() {
+        return getInt("lesson");
     }
 
-    public boolean isValid() {
-        return getBoolean("isValid");
+    public int getDuration() {
+        return getInt("duration");
     }
 }
