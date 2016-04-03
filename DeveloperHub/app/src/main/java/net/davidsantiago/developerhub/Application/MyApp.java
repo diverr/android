@@ -26,5 +26,6 @@ public class MyApp extends Application {
         Parse.initialize(this, APPID, CLIENTKEY);
 
 
+
     }
 }
