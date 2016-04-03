@@ -1,14 +1,8 @@
 package net.davidsantiago.developerhub.Activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.SaveCallback;
 
 import net.davidsantiago.developerhub.Adapters.CustomCategoryAdapter;
 import net.davidsantiago.developerhub.R;
@@ -40,7 +34,7 @@ public class CategoriesActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_main;
+        return R.layout.activity_category;
     }
 
 

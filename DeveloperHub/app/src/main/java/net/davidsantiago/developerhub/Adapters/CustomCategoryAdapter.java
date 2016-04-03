@@ -35,21 +35,34 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
     @Override
     public View getItemView(Category category, View convertView, ViewGroup parent) {
 
+        ViewHolder viewHolder;
+
         if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.example, null);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_adapter_category, null);
+
+            viewHolder = new ViewHolder();
+            viewHolder.textViewTitle = (TextView) convertView.findViewById(R.id.textViewCategoryTitle);
+            viewHolder.textViewDetails = (TextView) convertView.findViewById(R.id.textViewCategoryDetails);
+            viewHolder.imgView = (ParseImageView) convertView.findViewById(R.id.imageViewPhotoCategory);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        TextView textView = (TextView) convertView.findViewById(R.id.textViewTitle);
-
-        ParseImageView img = (ParseImageView) convertView.findViewById(R.id.imageViewPhotoCategory);
-
-        textView.setText(category.getName());
+        viewHolder.textViewTitle.setText(category.getName());
+        viewHolder.textViewDetails.setText("by Admin - 17 videos");
 
         ParseFile file = category.getIcon();
         if(file != null) {
-            Picasso.with(getContext()).load(file.getUrl()).into(img);
+            Picasso.with(getContext()).load(file.getUrl()).into(viewHolder.imgView);
         }
 
         return convertView;
+    }
+
+    class ViewHolder {
+        TextView textViewTitle;
+        TextView textViewDetails;
+        ParseImageView imgView;
     }
 }
