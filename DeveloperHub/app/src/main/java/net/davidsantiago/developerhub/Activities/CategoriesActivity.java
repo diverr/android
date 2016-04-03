@@ -15,7 +15,7 @@ import net.davidsantiago.developerhub.R;
 import net.davidsantiago.developerhub.Util.BaseActivity;
 
 
-public class MainActivity extends BaseActivity {
+public class CategoriesActivity extends BaseActivity {
 
     private Toolbar toolbar;
 
@@ -35,16 +35,7 @@ public class MainActivity extends BaseActivity {
         adapter = new CustomCategoryAdapter(this);
         listView.setAdapter(adapter);
 
-        //ParseObject testObject = new ParseObject("TestObject");
-        //testObject.put("foo", "bar");
-        //testObject.put("foo2", "bar2");
 
-        //testObject.saveInBackground(new SaveCallback() {
-        //    @Override
-        //    public void done(ParseException e) {
-        //        Toast.makeText(MainActivity.this, "Hola, ya termino", Toast.LENGTH_LONG).show();
-        //    }
-        //});
     }
 
     @Override

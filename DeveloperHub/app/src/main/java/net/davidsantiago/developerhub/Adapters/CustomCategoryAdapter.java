@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.squareup.picasso.Picasso;
 
 import net.davidsantiago.developerhub.Models.Category;
 import net.davidsantiago.developerhub.R;
@@ -30,7 +33,7 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
     }
 
     @Override
-    public View getItemView(Category object, View convertView, ViewGroup parent) {
+    public View getItemView(Category category, View convertView, ViewGroup parent) {
 
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.example, null);
@@ -38,7 +41,14 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
 
         TextView textView = (TextView) convertView.findViewById(R.id.textViewTitle);
 
-        textView.setText(object.getName());
+        ParseImageView img = (ParseImageView) convertView.findViewById(R.id.imageViewPhotoCategory);
+
+        textView.setText(category.getName());
+
+        ParseFile file = category.getIcon();
+        if(file != null) {
+            Picasso.with(getContext()).load(file.getUrl()).into(img);
+        }
 
         return convertView;
     }
