@@ -20,7 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class CategoriesActivity extends BaseActivity implements AdapterViewCompat.OnItemClickListener {
+public class CategoriesActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private Toolbar toolbar;
     private ListView listView;
@@ -40,7 +40,7 @@ public class CategoriesActivity extends BaseActivity implements AdapterViewCompa
         listView = (ListView) findViewById(R.id.listViewCategory);
         adapter = new CustomCategoryAdapter(this);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        listView.setOnItemClickListener(this);
 
         listCategories = new LinkedList<Category>();
         listCategories = Api.getAllCategories();
@@ -52,9 +52,8 @@ public class CategoriesActivity extends BaseActivity implements AdapterViewCompa
         return R.layout.activity_category;
     }
 
-
     @Override
-    public void onItemClick(AdapterViewCompat<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, CoursesActivity.class);
         intent.putExtra("objectId", listCategories.get(position).getObjectId());
         startActivity(intent);

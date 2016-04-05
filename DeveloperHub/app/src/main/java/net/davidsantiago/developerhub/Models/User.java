@@ -39,7 +39,7 @@ public class User extends ParseUser {
     }
 
     public Boolean getEmailVerified() {
-        return emailVerified;
+        return getBoolean("email");
     }
 
     public boolean isEmailVerified() {

@@ -43,6 +43,7 @@ public class CustomCourseAdapter extends ParseQueryAdapter<Course> {
 
             viewHolder = new ViewHolder();
             viewHolder.textViewTitle = (TextView) convertView.findViewById(R.id.textViewCourseTitle);
+            viewHolder.textViewDetails = (TextView) convertView.findViewById(R.id.textViewCourseDetails);
             viewHolder.imgView = (ParseImageView) convertView.findViewById(R.id.imageViewPhotoCourse);
             convertView.setTag(viewHolder);
         } else {

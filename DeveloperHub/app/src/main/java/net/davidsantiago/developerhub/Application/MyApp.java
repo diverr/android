@@ -18,8 +18,8 @@ import net.davidsantiago.developerhub.Models.Video;
  */
 public class MyApp extends Application {
 
-    private final String APPID = "y3h39K2E7w3NjlIp4tHcBQslM64svj0Zr59V2jNG";
-    private final String CLIENTKEY = "0xQIJhRlnYwZrBBWSG0Vt63NS0gRa6tFAVSkCdZK";
+    private final String APPID = "R1vKrgmP1SCg0qTf0t9KcR9X9zWFXSTrgllAanWV";
+    private final String CLIENTKEY = "f8LCl8axja9uOshMGzdTLWQwhIKVz48sai9SELPs";
 
     @Override
     public void onCreate() {
