@@ -1,5 +1,6 @@
 package net.davidsantiago.developerhub.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import net.davidsantiago.developerhub.API.Api;
 import net.davidsantiago.developerhub.Adapters.CustomCategoryAdapter;
 import net.davidsantiago.developerhub.Models.Category;
+import net.davidsantiago.developerhub.Models.Course;
 import net.davidsantiago.developerhub.R;
 import net.davidsantiago.developerhub.Util.BaseActivity;
 
@@ -53,6 +55,8 @@ public class CategoriesActivity extends BaseActivity implements AdapterViewCompa
 
     @Override
     public void onItemClick(AdapterViewCompat<?> parent, View view, int position, long id) {
-        Toast.makeText(this, "Click en: " + listCategories.get(position).getName(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, CoursesActivity.class);
+        intent.putExtra("objectId", listCategories.get(position).getObjectId());
+        startActivity(intent);
     }
 }

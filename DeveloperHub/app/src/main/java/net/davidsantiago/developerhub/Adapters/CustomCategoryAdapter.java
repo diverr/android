@@ -42,7 +42,6 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
 
             viewHolder = new ViewHolder();
             viewHolder.textViewTitle = (TextView) convertView.findViewById(R.id.textViewCategoryTitle);
-            viewHolder.textViewDetails = (TextView) convertView.findViewById(R.id.textViewCategoryDetails);
             viewHolder.imgView = (ParseImageView) convertView.findViewById(R.id.imageViewPhotoCategory);
             convertView.setTag(viewHolder);
         } else {
@@ -50,7 +49,6 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
         }
 
         viewHolder.textViewTitle.setText(category.getName());
-        viewHolder.textViewDetails.setText("by Admin - 17 videos");
 
         ParseFile file = category.getIcon();
         if(file != null) {
@@ -62,7 +60,6 @@ public class CustomCategoryAdapter extends ParseQueryAdapter<Category> {
 
     class ViewHolder {
         TextView textViewTitle;
-        TextView textViewDetails;
         ParseImageView imgView;
     }
 }

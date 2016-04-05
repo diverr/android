@@ -11,34 +11,15 @@
         android:layout_marginRight="15dp"
         android:id="@+id/imageViewPhotoCategory" />
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:paddingRight="5dp"
-            android:textColor="@color/colorWhite"
-            android:id="@+id/textViewCategoryTitle"
-            android:layout_marginLeft="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:paddingRight="5dp"
-            android:textColor="@color/colorWhite"
-            android:id="@+id/textViewCategoryDetails"
-            android:textSize="18dp"
-            android:layout_marginLeft="15dp" />
-
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/textViewCategoryTitle"
+        android:layout_marginLeft="15dp" />
 
 </LinearLayout>
