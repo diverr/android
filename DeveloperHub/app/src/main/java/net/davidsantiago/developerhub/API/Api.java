@@ -2,7 +2,9 @@ package net.davidsantiago.developerhub.API;
 
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.CountCallback;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -43,6 +45,70 @@ public class Api {
         return list;
 
     }
+
+
+    public static void numberCoursesByCategory(final Context context, final String idCategory, final TextView details) {
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        Category categoryTemp = (Category) ParseObject.createWithoutData(Category.class, idCategory);
+
+        query.whereEqualTo("category", categoryTemp);
+        query.whereEqualTo("isValid", true);
+        int number = 0;
+        try {
+            number = query.count();
+            // method
+        }catch (ParseException e) {
+            Toast.makeText(context, "Unexpected error occured.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static void numberVideosByCategory(final Context context, final String idCategory, final TextView details) {
+        ParseQuery<Course> query = ParseQuery.getQuery(Course.class);
+        Category categoryTemp = (Category) ParseObject.createWithoutData(Category.class, idCategory);
+
+        query.whereEqualTo("category", categoryTemp);
+        query.whereEqualTo("isValid", true);
+
+        query.findInBackground(new FindCallback<Course>() {
+            @Override
+            public void done(List<Course> courses, ParseException e) {
+                List<String> idCourses = new LinkedList<String>();
+                if(e == null) {
+
+                    for(Course course : courses) {
+                        idCourses.add(course.getId());
+                    }
+
+                    ParseQuery<Course> innerQuery = ParseQuery.getQuery(Course.class);
+                    innerQuery.whereContainedIn("objectId", idCourses);
+
+                    ParseQuery<Video> mQuery = ParseQuery.getQuery(Video.class);
+                    mQuery.whereMatchesQuery("course", innerQuery);
+                    mQuery.countInBackground(new CountCallback() {
+                        @Override
+                        public void done(int numberOfVideos, ParseException e) {
+                            if(e == null) {
+                                if(numberOfVideos == 0) {
+                                    details.setText(details.getText() + "0 Videos");
+                                } else {
+                                    // method
+                                }
+                            }
+                        }
+                    });
+
+                }
+            }
+        });
+    }
+
+
+    public static void showCoursesByCategory(Context context, int number, TextView details) {
+
+    }
+
+
 
     public static void getDetailsForCourse(final Context context, final String idOwner, final String idCourse, final TextView details) {
         final User u = new User();
